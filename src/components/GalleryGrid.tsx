@@ -98,18 +98,37 @@ export default function GalleryGrid({ images }: { images: GalleryImage[] }) {
             ❮
           </button>
 
-          <img 
-            src={images[selectedIndex].imageUrl} 
-            alt="Enlarged gallery view" 
-            style={{ 
-              maxWidth: '100%', maxHeight: '100%', 
-              objectFit: 'contain', 
-              borderRadius: 'var(--radius-md)',
-              boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
-              position: 'relative',
-              zIndex: 10
-            }} 
-          />
+          <div style={{ position: 'relative', width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', overflow: 'hidden', zIndex: 10 }}>
+            {images.map((img, index) => {
+              // Calculate offset relative to selected index
+              let offset = index - selectedIndex;
+              
+              // Handle wrap-around for infinite scroll feel
+              if (offset > images.length / 2) offset -= images.length;
+              if (offset < -images.length / 2) offset += images.length;
+
+              if (Math.abs(offset) > 2) return null; // Don't render images too far away for performance
+
+              return (
+                <img 
+                  key={`lightbox-${img.id}`}
+                  src={img.imageUrl} 
+                  alt="Enlarged gallery view" 
+                  style={{ 
+                    position: 'absolute',
+                    maxWidth: '100%', maxHeight: '100%', 
+                    objectFit: 'contain', 
+                    borderRadius: 'var(--radius-md)',
+                    boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
+                    transform: `translateX(${offset * 120}%) scale(${offset === 0 ? 1 : 0.8})`,
+                    opacity: offset === 0 ? 1 : 0.5,
+                    transition: 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease',
+                    pointerEvents: offset === 0 ? 'auto' : 'none',
+                  }} 
+                />
+              );
+            })}
+          </div>
 
           {/* Right Arrow */}
           <button 
