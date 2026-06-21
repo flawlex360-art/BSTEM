@@ -9,15 +9,16 @@ interface GalleryImage {
 
 export default function GalleryGrid({ images }: { images: GalleryImage[] }) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
   useEffect(() => {
     if (selectedIndex === null) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'ArrowRight') {
-        setSelectedIndex((prev) => (prev !== null ? (prev + 1) % images.length : null));
+        nextImage();
       } else if (e.key === 'ArrowLeft') {
-        setSelectedIndex((prev) => (prev !== null ? (prev - 1 + images.length) % images.length : null));
+        prevImage();
       } else if (e.key === 'Escape') {
         setSelectedIndex(null);
       }
@@ -26,6 +27,26 @@ export default function GalleryGrid({ images }: { images: GalleryImage[] }) {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedIndex, images.length]);
+
+  const nextImage = () => setSelectedIndex((prev) => (prev !== null ? (prev + 1) % images.length : null));
+  const prevImage = () => setSelectedIndex((prev) => (prev !== null ? (prev - 1 + images.length) % images.length : null));
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+
+    if (diff > 50) {
+      nextImage(); // Swipe left
+    } else if (diff < -50) {
+      prevImage(); // Swipe right
+    }
+    setTouchStartX(null);
+  };
 
   return (
     <>
@@ -54,6 +75,8 @@ export default function GalleryGrid({ images }: { images: GalleryImage[] }) {
       {/* Lightbox for single image using createPortal to escape any parent CSS transforms */}
       {selectedIndex !== null && typeof document !== 'undefined' && createPortal(
         <div 
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
           style={{ 
             position: 'fixed', inset: 0, zIndex: 9999, 
             background: 'rgba(0,0,0,0.95)', 
@@ -67,6 +90,14 @@ export default function GalleryGrid({ images }: { images: GalleryImage[] }) {
             onClick={() => setSelectedIndex(null)} 
           />
           
+          {/* Left Arrow */}
+          <button 
+            onClick={(e) => { e.stopPropagation(); prevImage(); }}
+            style={{ position: 'absolute', left: '1rem', zIndex: 11, background: 'rgba(255,255,255,0.2)', color: 'white', border: 'none', borderRadius: '50%', width: '50px', height: '50px', fontSize: '1.5rem', cursor: 'pointer' }}
+          >
+            ❮
+          </button>
+
           <img 
             src={images[selectedIndex].imageUrl} 
             alt="Enlarged gallery view" 
@@ -79,10 +110,18 @@ export default function GalleryGrid({ images }: { images: GalleryImage[] }) {
               zIndex: 10
             }} 
           />
+
+          {/* Right Arrow */}
+          <button 
+            onClick={(e) => { e.stopPropagation(); nextImage(); }}
+            style={{ position: 'absolute', right: '1rem', zIndex: 11, background: 'rgba(255,255,255,0.2)', color: 'white', border: 'none', borderRadius: '50%', width: '50px', height: '50px', fontSize: '1.5rem', cursor: 'pointer' }}
+          >
+            ❯
+          </button>
           
           {/* Navigation Hints */}
-          <div style={{ position: 'absolute', bottom: '2rem', color: 'white', opacity: 0.8, pointerEvents: 'none', zIndex: 10 }}>
-            Use ⬅️ and ➡️ arrows to navigate
+          <div style={{ position: 'absolute', bottom: '2rem', color: 'white', opacity: 0.8, pointerEvents: 'none', zIndex: 10, textAlign: 'center' }}>
+            Swipe or use arrows to navigate
           </div>
 
           <button 
