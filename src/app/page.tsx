@@ -17,6 +17,7 @@ export default async function Home() {
   const projects = db.projects.slice(0, 3);
   const events = db.events.slice(0, 4);
   const gallery = db.gallery || [];
+  const leadership = db.leadership || [];
   const testimonials = db.testimonials;
 
   return (
@@ -25,7 +26,7 @@ export default async function Home() {
       <HeroSlideshow>
         <div className="hero-overlay"></div>
         <div className="container hero-content">
-          <h1>{heroBlock?.title || 'Empowering African Youth Through STEM'}</h1>
+          <h1>{heroBlock?.title || 'Empowering Learners Through STEM'}</h1>
           <p className="hero-subtitle">{heroBlock?.subtitle || 'We bridge the digital divide by providing quality STEM education, mentorship, and innovation programs.'}</p>
           <div className="hero-actions">
             <Link href="/about" className="btn btn-primary">Get Started</Link>
@@ -160,6 +161,28 @@ export default async function Home() {
 
         <div className="container center mt-4">
           <Link href="/gallery" className="btn btn-primary">View Full Gallery</Link>
+        </div>
+      </section>
+
+      {/* Leadership Team */}
+      <section className="section bg-white">
+        <div className="container">
+          <div className="section-header center">
+            <h2>Our Leadership</h2>
+            <p>Meet the dedicated team behind Kpando Anglican STEM Club</p>
+          </div>
+          <div className="leadership-grid">
+            {leadership.map(leader => (
+              <div key={leader.id} className="leader-card center">
+                <div className="leader-image-container">
+                  <img src={leader.imageUrl} alt={leader.name} className="leader-image" />
+                </div>
+                <h3>{leader.name}</h3>
+                <h5 style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}>{leader.role}</h5>
+                <p style={{ fontSize: '0.9rem', opacity: 0.9 }}>"{leader.message}"</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

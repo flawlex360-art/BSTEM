@@ -95,6 +95,32 @@
       ]
     }
   ],
+  "pastEvents": [
+    {
+      "id": "1",
+      "title": "Launching of the STEM Club",
+      "description": "The official launching of our STEM Club by Mr. Rex Eleblu alongside our District Science and Mathematics Coordinator.",
+      "location": "Kpando",
+      "date": "Recent",
+      "imageUrls": [
+        "/event-placeholder.jpg",
+        "/event-placeholder.jpg",
+        "/event-placeholder.jpg"
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Excursion to Wli Waterfalls and Mount Afadjato",
+      "description": "An exciting and educational field trip we took in May to explore the geography, biology, and natural wonders of Wli Waterfalls and Mount Afadjato.",
+      "location": "Wli and Afadjato",
+      "date": "May",
+      "imageUrls": [
+        "/event-placeholder.jpg",
+        "/event-placeholder.jpg",
+        "/event-placeholder.jpg"
+      ]
+    }
+  ],
   "gallery": [
     { "id": "1", "imageUrl": "/gallery-1.jpg" },
     { "id": "2", "imageUrl": "/gallery-2.jpg" },
@@ -103,9 +129,67 @@
     { "id": "5", "imageUrl": "/gallery-5.jpg" },
     { "id": "6", "imageUrl": "/gallery-6.jpg" },
     { "id": "7", "imageUrl": "/gallery-7.jpg" },
-    { "id": "8", "imageUrl": "/gallery-8.jpg" }
+    { "id": "8", "imageUrl": "/gallery-8.jpg" },
+    { "id": "9", "imageUrl": "/gallery-9.jpg" },
+    { "id": "10", "imageUrl": "/gallery-10.jpg" },
+    { "id": "11", "imageUrl": "/gallery-11.jpg" },
+    { "id": "12", "imageUrl": "/gallery-12.jpg" },
+    { "id": "13", "imageUrl": "/gallery-13.jpg" },
+    { "id": "14", "imageUrl": "/gallery-14.jpg" },
+    { "id": "15", "imageUrl": "/gallery-15.jpg" },
+    { "id": "16", "imageUrl": "/gallery-16.jpg" },
+    { "id": "17", "imageUrl": "/gallery-17.jpg" },
+    { "id": "18", "imageUrl": "/gallery-18.jpg" },
+    { "id": "19", "imageUrl": "/gallery-19.jpg" },
+    { "id": "20", "imageUrl": "/gallery-20.jpg" },
+    { "id": "21", "imageUrl": "/gallery-21.jpg" },
+    { "id": "22", "imageUrl": "/gallery-22.jpg" },
+    { "id": "23", "imageUrl": "/gallery-23.jpg" }
   ],
-  "blogPosts": [],
+  "blogPosts": [
+    {
+      "id": "1",
+      "title": "Our First Robotics Prototype!",
+      "author": "Kofi Asamoah & Akua Danso",
+      "date": "July 12, 2026",
+      "content": "This week in the STEM club, we embarked on an exciting journey to build our very first robotics prototype. We used recycled materials for the chassis and a basic Arduino kit to program the motors.\n\nIt was a challenging process, especially getting the wheels aligned properly, but after a few trials (and some help from Mr. Kpogoh-Mensah), we finally got it moving!\n\nWe learned a lot about circuitry, programming loops, and the importance of teamwork. Check out the photos from our session above!",
+      "imageUrls": [
+        "/project-1.jpg",
+        "/project-2.jpg",
+        "/project-3.jpg"
+      ]
+    }
+  ],
+  "leadership": [
+    {
+      "id": "1",
+      "name": "Mr. Eli Nugbemado",
+      "role": "Patron",
+      "message": "Guiding our vision to empower the youth through continuous learning and impactful STEM innovation.",
+      "imageUrl": "/patron.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Mr. Prudence Konutsey",
+      "role": "Co-Patron",
+      "message": "Fostering an inclusive environment where students can discover their true potential and passion for science.",
+      "imageUrl": "/copatron.jpg"
+    },
+    {
+      "id": "3",
+      "name": "Mr. Robert Kpogoh-Mensah",
+      "role": "Headteacher",
+      "message": "Committed to integrating practical STEM education into our curriculum to shape future-ready leaders.",
+      "imageUrl": "/headteacher.jpg"
+    },
+    {
+      "id": "4",
+      "name": "Rv. Fr. Selorm Selin Mireku",
+      "role": "SMC Chairman",
+      "message": "Building a strong partnership between the community and the school to support the next generation of innovators.",
+      "imageUrl": "/smcchairman.jpg"
+    }
+  ],
   "testimonials": [
     {
       "id": "1",

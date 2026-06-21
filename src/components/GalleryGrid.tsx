@@ -44,7 +44,7 @@ export default function GalleryGrid({ images }: { images: GalleryImage[] }) {
             <img 
               src={img.imageUrl} 
               alt={`Gallery preview ${index + 1}`} 
-              style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 'var(--radius-md) var(--radius-md) 0 0' }} 
+              style={{ width: '100%', height: '250px', objectFit: 'cover', display: 'block', borderRadius: 'var(--radius-md) var(--radius-md) 0 0' }} 
             />
           </div>
         ))}

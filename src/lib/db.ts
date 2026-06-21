@@ -76,6 +76,7 @@ export interface DbSchema {
   services: Service[];
   projects: Project[];
   events: Event[];
+  pastEvents?: Event[];
   gallery: GalleryImage[];
   blogPosts: BlogPost[];
   testimonials: Testimonial[];
@@ -87,6 +88,7 @@ export interface Database {
   services: Service[];
   projects: Project[];
   events: Event[];
+  pastEvents?: Event[];
   gallery: GalleryImage[];
   blogPosts: BlogPost[];
   testimonials: Testimonial[];
@@ -100,6 +102,7 @@ const defaultData: Database = {
   services: [],
   projects: [],
   events: [],
+  pastEvents: [],
   gallery: [],
   blogPosts: [],
   testimonials: []
