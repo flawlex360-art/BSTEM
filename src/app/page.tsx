@@ -51,18 +51,18 @@ export default async function Home() {
       </section>
 
       {/* Services / What We Do */}
-      <section className="section bg-light">
+      <section className="bg-light" style={{ padding: '3rem 0' }}>
         <div className="container">
-          <div className="section-header center">
+          <div className="section-header center" style={{ marginBottom: '1.5rem' }}>
             <h2>What We Do</h2>
-            <p>We are always here to serve you with awesome services</p>
+            <p style={{ margin: 0 }}>We are always here to serve you with awesome services</p>
           </div>
-          <div className="services-grid">
+          <div className="services-grid" style={{ gap: '1.25rem', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}>
             {services.length > 0 ? services.map(service => (
-              <div key={service.id} className="card service-card">
-                <div className="service-icon">{service.icon || '🚀'}</div>
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
+              <div key={service.id} className="card service-card" style={{ padding: '1.25rem' }}>
+                <div className="service-icon" style={{ fontSize: '2rem', margin: '0 0 0.5rem 0' }}>{service.icon || '🚀'}</div>
+                <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>{service.title}</h3>
+                <p style={{ fontSize: '0.9rem', margin: 0 }}>{service.description}</p>
               </div>
             )) : (
               <p>No services found. Add some in the admin panel.</p>
