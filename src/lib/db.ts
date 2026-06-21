@@ -68,6 +68,14 @@ export interface GalleryImage {
   imageUrl: string;
 }
 
+export interface LeadershipMember {
+  id: string;
+  name: string;
+  role: string;
+  message: string;
+  imageUrl: string;
+}
+
 export interface DbSchema {
   settings: {
     siteName: string;
@@ -80,6 +88,7 @@ export interface DbSchema {
   gallery: GalleryImage[];
   blogPosts: BlogPost[];
   testimonials: Testimonial[];
+  leadership?: LeadershipMember[];
 }
 
 export interface Database {
@@ -92,6 +101,7 @@ export interface Database {
   gallery: GalleryImage[];
   blogPosts: BlogPost[];
   testimonials: Testimonial[];
+  leadership?: LeadershipMember[];
 }
 
 const defaultData: Database = {
@@ -105,7 +115,8 @@ const defaultData: Database = {
   pastEvents: [],
   gallery: [],
   blogPosts: [],
-  testimonials: []
+  testimonials: [],
+  leadership: []
 };
 
 export function getDb(): Database {
