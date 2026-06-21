@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
 interface GalleryImage {
   id: string;
@@ -50,8 +51,8 @@ export default function GalleryGrid({ images }: { images: GalleryImage[] }) {
         ))}
       </div>
 
-      {/* Lightbox for single image */}
-      {selectedIndex !== null && (
+      {/* Lightbox for single image using createPortal to escape any parent CSS transforms */}
+      {selectedIndex !== null && typeof document !== 'undefined' && createPortal(
         <div 
           style={{ 
             position: 'fixed', inset: 0, zIndex: 9999, 
@@ -91,7 +92,8 @@ export default function GalleryGrid({ images }: { images: GalleryImage[] }) {
           >
             Close ✕
           </button>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );

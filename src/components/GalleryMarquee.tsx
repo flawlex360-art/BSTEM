@@ -36,20 +36,17 @@ export default function GalleryMarquee({ images }: { images: GalleryImage[] }) {
       {/* The scrolling container */}
       <div className="animate-marquee" style={{ display: 'flex', gap: '1.5rem', width: 'max-content' }}>
         {marqueeImages.map((img, index) => {
-          // Keep track of the original index for the lightbox
           const originalIndex = index % images.length;
           
           return (
             <div 
               key={`${img.id}-${index}`} 
-              onClick={() => setSelectedIndex(originalIndex)}
               style={{ 
                 width: '300px', 
                 height: '200px', 
                 flexShrink: 0,
                 borderRadius: 'var(--radius-md)', 
                 overflow: 'hidden',
-                cursor: 'pointer',
                 transition: 'transform 0.3s ease',
               }}
               className="card hover-scale"
@@ -63,48 +60,6 @@ export default function GalleryMarquee({ images }: { images: GalleryImage[] }) {
           );
         })}
       </div>
-
-      {/* Lightbox for single image (Same as GalleryGrid) */}
-      {selectedIndex !== null && (
-        <div 
-          style={{ 
-            position: 'fixed', inset: 0, zIndex: 9999, 
-            background: 'rgba(0,0,0,0.95)', 
-            display: 'flex', justifyContent: 'center', alignItems: 'center',
-            padding: '2rem' 
-          }}
-        >
-          <div 
-            style={{ position: 'absolute', inset: 0, cursor: 'zoom-out' }} 
-            onClick={() => setSelectedIndex(null)} 
-          />
-          
-          <img 
-            src={images[selectedIndex].imageUrl} 
-            alt="Enlarged gallery view" 
-            style={{ 
-              maxWidth: '100%', maxHeight: '100%', 
-              objectFit: 'contain', 
-              borderRadius: 'var(--radius-md)',
-              boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
-              position: 'relative',
-              zIndex: 10
-            }} 
-          />
-          
-          <div style={{ position: 'absolute', bottom: '2rem', color: 'white', opacity: 0.8, pointerEvents: 'none', zIndex: 10 }}>
-            Use ⬅️ and ➡️ arrows to navigate
-          </div>
-
-          <button 
-            onClick={() => setSelectedIndex(null)}
-            className="btn btn-primary"
-            style={{ position: 'absolute', top: '2rem', right: '2rem', zIndex: 10 }}
-          >
-            Close ✕
-          </button>
-        </div>
-      )}
     </div>
   );
 }
