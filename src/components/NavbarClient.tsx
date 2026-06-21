@@ -23,8 +23,13 @@ export default function NavbarClient({ siteName }: { siteName: string }) {
           <Link href="/about" className="nav-link" onClick={() => setIsOpen(false)}>About</Link>
           <Link href="/services" className="nav-link" onClick={() => setIsOpen(false)}>Services</Link>
           <Link href="/projects" className="nav-link" onClick={() => setIsOpen(false)}>Projects</Link>
-          <Link href="/events" className="nav-link" onClick={() => setIsOpen(false)}>Upcoming Events</Link>
-          <Link href="/events/past" className="nav-link" onClick={() => setIsOpen(false)}>Past Events</Link>
+          <div className="nav-dropdown">
+            <button className="nav-link dropbtn">Events ▼</button>
+            <div className="dropdown-content">
+              <Link href="/events" onClick={() => setIsOpen(false)}>Upcoming Events</Link>
+              <Link href="/events/past" onClick={() => setIsOpen(false)}>Past Events</Link>
+            </div>
+          </div>
           <Link href="/blog" className="nav-link" onClick={() => setIsOpen(false)}>Blog</Link>
           <Link href="/gallery" className="nav-link" onClick={() => setIsOpen(false)}>Gallery</Link>
           <Link href="/testimonials" className="nav-link" onClick={() => setIsOpen(false)}>Testimonials</Link>
