@@ -36,7 +36,7 @@ export default async function Home() {
       </HeroSlideshow>
 
       {/* About Section */}
-      <section className="section bg-white">
+      <section className="bg-white" style={{ paddingTop: '5rem', paddingBottom: '2rem' }}>
         <div className="container about-grid">
           <div className="about-text">
             <h5>About Us</h5>
@@ -51,7 +51,7 @@ export default async function Home() {
       </section>
 
       {/* Services / What We Do */}
-      <section className="bg-light" style={{ padding: '3rem 0' }}>
+      <section className="bg-light" style={{ padding: '2rem 0' }}>
         <div className="container">
           <div className="section-header center" style={{ marginBottom: '1.5rem' }}>
             <h2>What We Do</h2>
@@ -72,7 +72,7 @@ export default async function Home() {
       </section>
 
       {/* Projects */}
-      <section className="section bg-white">
+      <section className="bg-white" style={{ paddingTop: '2rem', paddingBottom: '5rem' }}>
         <div className="container">
           <div className="section-header">
             <h2>Our Projects</h2>
