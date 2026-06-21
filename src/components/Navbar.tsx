@@ -36,7 +36,6 @@ export default async function Navbar() {
             </div>
           </div>
           <Link href="/contact" className="nav-link">Contact</Link>
-          <Link href="/admin" className="btn btn-primary ml-4">Login</Link>
         </div>
       </div>
     </nav>
