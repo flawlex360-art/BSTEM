@@ -150,10 +150,6 @@ button, .btn {
   width: max-content;
 }
 
-.animate-marquee:hover {
-  animation-play-state: paused;
-}
-
 /* Form Elements */
 input, textarea, select {
   width: 100%;
