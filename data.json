@@ -162,6 +162,20 @@
   ],
   "leadership": [
     {
+      "id": "4",
+      "name": "Rv. Fr. Selorm Selin Mireku",
+      "role": "SMC Chairman",
+      "message": "Building a strong partnership between the community and the school to support the next generation of innovators.",
+      "imageUrl": "/smcchairman.jpg"
+    },
+    {
+      "id": "3",
+      "name": "Mr. Robert Kpogoh-Mensah",
+      "role": "Headteacher",
+      "message": "Committed to integrating practical STEM education into our curriculum to shape future-ready leaders.",
+      "imageUrl": "/headteacher.jpg"
+    },
+    {
       "id": "1",
       "name": "Mr. Eli Nugbemado",
       "role": "Patron",
@@ -174,20 +188,6 @@
       "role": "Co-Patron",
       "message": "Fostering an inclusive environment where students can discover their true potential and passion for science.",
       "imageUrl": "/copatron.jpg"
-    },
-    {
-      "id": "3",
-      "name": "Mr. Robert Kpogoh-Mensah",
-      "role": "Headteacher",
-      "message": "Committed to integrating practical STEM education into our curriculum to shape future-ready leaders.",
-      "imageUrl": "/headteacher.jpg"
-    },
-    {
-      "id": "4",
-      "name": "Rv. Fr. Selorm Selin Mireku",
-      "role": "SMC Chairman",
-      "message": "Building a strong partnership between the community and the school to support the next generation of innovators.",
-      "imageUrl": "/smcchairman.jpg"
     }
   ],
   "testimonials": [
