@@ -1,0 +1,99 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id       String @id @default(uuid())
+  email    String @unique
+  password String
+  name     String
+}
+
+model SiteSettings {
+  id        String @id @default(uuid())
+  siteName  String
+  logoUrl   String?
+  footerText String?
+  contactEmail String?
+  contactPhone String?
+  address   String?
+  facebook  String?
+  twitter   String?
+  instagram String?
+}
+
+// A dynamic block for pages like Home, About Us, etc.
+model PageBlock {
+  id        String @id @default(uuid())
+  pageSlug  String // e.g. "home", "about"
+  section   String // e.g. "hero", "about-snippet", "mission"
+  title     String?
+  subtitle  String?
+  content   String?
+  imageUrl  String?
+  order     Int    @default(0)
+}
+
+model Service {
+  id          String @id @default(uuid())
+  title       String
+  description String
+  icon        String?
+  order       Int    @default(0)
+}
+
+model Project {
+  id          String @id @default(uuid())
+  title       String
+  description String
+  imageUrl    String?
+  date        String?
+}
+
+model Event {
+  id          String @id @default(uuid())
+  title       String
+  location    String
+  description String
+  date        String?
+}
+
+model BlogPost {
+  id          String @id @default(uuid())
+  title       String
+  excerpt     String
+  content     String
+  author      String?
+  date        String?
+  imageUrl    String?
+}
+
+model TeamMember {
+  id          String @id @default(uuid())
+  name        String
+  role        String
+  imageUrl    String?
+}
+
+model Testimonial {
+  id          String @id @default(uuid())
+  author      String
+  quote       String
+}
+
+model Partner {
+  id          String @id @default(uuid())
+  name        String
+  logoUrl     String?
+}
+
+model FAQ {
+  id          String @id @default(uuid())
+  question    String
+  answer      String
+}

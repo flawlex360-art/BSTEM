@@ -1,0 +1,136 @@
+{
+  "settings": {
+    "siteName": "Kpando Anglican STEM Club",
+    "contactPhone": "+233 59 266 4865",
+    "contactEmail": "info@kpandoanglicanstem.org",
+    "address": "Kpando, Volta Region, Ghana"
+  },
+  "pageBlocks": [
+    {
+      "id": "1781993191755",
+      "pageSlug": "Home",
+      "section": "",
+      "title": "",
+      "subtitle": "",
+      "content": "",
+      "imageUrl": "https://www.image2url.com/r2/default/images/1781993419543-eb011618-7268-4d34-aca5-4099b81c0234.jpg"
+    }
+  ],
+  "services": [
+    {
+      "id": "1",
+      "title": "Hands-on Workshops",
+      "description": "Practical experiments in physics and chemistry.",
+      "icon": "🧪"
+    },
+    {
+      "id": "2",
+      "title": "Teacher Training",
+      "description": "Equipping educators with effective teaching aids.",
+      "icon": "👨‍🏫"
+    },
+    {
+      "id": "3",
+      "title": "Electronics Club",
+      "description": "Building real-world circuits and robotics.",
+      "icon": "⚡"
+    }
+  ],
+  "projects": [
+    {
+      "id": "1",
+      "title": "Basic Electronics",
+      "description": "Students learning practical electronics and circuitry.",
+      "imageUrl": "/project-1.jpg",
+      "date": "2025"
+    },
+    {
+      "id": "2",
+      "title": "STEM Educator Training",
+      "description": "Empowering teachers with modern STEM tools and geometric models.",
+      "imageUrl": "/project-2.jpg",
+      "imageUrls": [
+        "/training-slide-1.jpg",
+        "/training-slide-2.jpg",
+        "/training-slide-3.jpg"
+      ],
+      "date": "2025"
+    },
+    {
+      "id": "3",
+      "title": "Recycling Innovation",
+      "description": "Building creative functional models using recycled materials.",
+      "imageUrl": "/project-3.jpg",
+      "date": "2025"
+    },
+    {
+      "id": "4",
+      "title": "Chemistry Demonstrations",
+      "description": "Exciting live chemistry experiments to spark curiosity.",
+      "imageUrl": "/project-5.jpg",
+      "date": "2025"
+    }
+  ],
+  "events": [
+    {
+      "id": "1",
+      "title": "Educational Tour: Kpando Water Treatment Plant",
+      "description": "A field trip to the local water treatment facility where students will learn about the science and engineering behind large-scale water purification processes.",
+      "location": "Kpando Water Treatment Plant",
+      "date": "July 2026",
+      "imageUrls": [
+        "/event-1-img1.jpg",
+        "/event-1-img2.jpg"
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Excursion to Coastal Ghana: Salt Production",
+      "description": "An exciting excursion to witness salt production firsthand, exploring the chemistry of evaporation, crystallization, and the local salt mining industry.",
+      "location": "Coastal Volta Region",
+      "date": "December 2026",
+      "imageUrls": [
+        "/event-2-img1.jpg",
+        "/event-2-img2.jpg"
+      ]
+    }
+  ],
+  "gallery": [
+    { "id": "1", "imageUrl": "/gallery-1.jpg" },
+    { "id": "2", "imageUrl": "/gallery-2.jpg" },
+    { "id": "3", "imageUrl": "/gallery-3.jpg" },
+    { "id": "4", "imageUrl": "/gallery-4.jpg" },
+    { "id": "5", "imageUrl": "/gallery-5.jpg" },
+    { "id": "6", "imageUrl": "/gallery-6.jpg" },
+    { "id": "7", "imageUrl": "/gallery-7.jpg" },
+    { "id": "8", "imageUrl": "/gallery-8.jpg" }
+  ],
+  "blogPosts": [],
+  "testimonials": [
+    {
+      "id": "1",
+      "author": "Kofi Asamoah",
+      "quote": "Being part of this group has completely changed how I look at science and technology. We don't just read about concepts; we actually build things and solve real problems. It's hands-on learning at its best!"
+    },
+    {
+      "id": "2",
+      "author": "Kwabena Ofori",
+      "quote": "The level of innovation happening here is deeply inspiring. It is amazing to see members upcycling materials and applying real-world physics to create practical solutions for everyday challenges."
+    },
+    {
+      "id": "3",
+      "author": "Akua Danso",
+      "quote": "My child used to struggle with computing, but the engaging activities and dedicated mentorship have turned it into their absolute favorite subject. The impact on their confidence is truly remarkable."
+    },
+    {
+      "id": "4",
+      "author": "Esi Mensah",
+      "quote": "I never thought I could design and build my own electronics. The practical, step-by-step approach has given me invaluable engineering skills and prepared me for the future."
+    },
+    {
+      "id": "5",
+      "author": "Kwame Appiah",
+      "quote": "The collaborative environment makes learning so much fun. Whether we are coding or working on a new project, everyone is encouraged to think outside the box and innovate."
+    }
+  ]
+}
