@@ -1,5 +1,5 @@
 import { getDb } from '@/lib/db';
-import CardSlideshow from '@/components/CardSlideshow';
+import GalleryGrid from '@/components/GalleryGrid';
 
 export const metadata = {
   title: 'Past Events | Kpando Anglican STEM Club',
@@ -38,13 +38,11 @@ export default async function PastEventsPage() {
                     <p style={{ marginTop: '1rem' }}>{event.description}</p>
                   </div>
 
-                  {/* Image Slideshow Placeholder */}
+                  {/* Image Grid */}
                   {event.imageUrls && event.imageUrls.length > 0 && (
-                    <div style={{ width: '100%', height: '400px', backgroundColor: '#e2e8f0', borderRadius: 'var(--radius-md)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-                      <CardSlideshow 
-                        images={event.imageUrls} 
-                        alt={event.title} 
-                        style={{ width: '100%', height: '100%' }}
+                    <div style={{ marginTop: '1.5rem' }}>
+                      <GalleryGrid 
+                        images={event.imageUrls.map((url: string, idx: number) => ({ id: `${event.id}-img-${idx}`, imageUrl: url }))} 
                       />
                     </div>
                   )}
