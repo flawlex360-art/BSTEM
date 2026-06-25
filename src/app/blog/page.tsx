@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import Link from 'next/link';
 import BlogSlideshow from '@/components/BlogSlideshow';
 
 export default async function BlogPage() {
@@ -19,33 +20,28 @@ export default async function BlogPage() {
       </div>
 
       <section className="section bg-white">
-        <div className="container" style={{ maxWidth: '800px' }}>
+        <div className="container" style={{ maxWidth: '1200px' }}>
           {blogPosts.length === 0 ? (
             <div className="center" style={{ padding: '4rem 0', opacity: 0.7 }}>
               <h3>Coming Soon!</h3>
               <p>Check back later to read amazing stories and projects from our STEM club learners.</p>
             </div>
           ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
-              {blogPosts.map((post: any) => (
-                <article key={post.id} className="card" style={{ padding: '2rem' }}>
-                  <header style={{ marginBottom: '1.5rem', textAlign: 'center' }}>
-                    <h2>{post.title}</h2>
-                    <div style={{ color: 'var(--primary)', fontWeight: 'bold' }}>By {post.author}</div>
-                    {post.date && <div style={{ fontSize: '0.9rem', opacity: 0.7, marginTop: '0.25rem' }}>{post.date}</div>}
-                  </header>
-
-                  {(post.imageUrl || (post.imageUrls && post.imageUrls.length > 0)) && (
-                    <div style={{ marginBottom: '2rem' }}>
-                      <BlogSlideshow images={post.imageUrls || [post.imageUrl]} />
+            <div className="blog-grid">
+              {blogPosts.map((post: any) => {
+                const coverImage = post.imageUrls?.[0] || post.imageUrl || '/default-about.jpg';
+                return (
+                  <Link href={`/blog/${post.id}`} key={post.id} className="card hover-scale" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', textDecoration: 'none', color: 'inherit' }}>
+                    <img src={coverImage} alt={post.author} className="author-avatar" />
+                    <h3 style={{ margin: '0.5rem 0', lineHeight: 1.3 }}>{post.title}</h3>
+                    <div style={{ color: 'var(--primary)', fontWeight: 'bold', fontSize: '0.9rem' }}>By {post.author}</div>
+                    {post.date && <div style={{ fontSize: '0.8rem', opacity: 0.7, marginTop: '0.25rem' }}>{post.date}</div>}
+                    <div style={{ marginTop: '1rem', color: 'var(--text-muted)', fontSize: '0.9rem' }}>
+                      Click to read full post...
                     </div>
-                  )}
-
-                  <div style={{ whiteSpace: 'pre-line', lineHeight: 1.8 }}>
-                    {post.content}
-                  </div>
-                </article>
-              ))}
+                  </Link>
+                );
+              })}
             </div>
           )}
         </div>
