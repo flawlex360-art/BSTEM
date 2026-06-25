@@ -103,9 +103,11 @@
       "location": "Wli and Afadjato",
       "date": "May 9",
       "imageUrls": [
-        "/event-placeholder.jpg",
-        "/event-placeholder.jpg",
-        "/event-placeholder.jpg"
+        "/excursion-1.jpg",
+        "/excursion-2.jpg",
+        "/excursion-3.jpg",
+        "/excursion-4.jpg",
+        "/excursion-5.jpg"
       ]
     },
     {
@@ -144,7 +146,12 @@
     { "id": "20", "imageUrl": "/gallery-20.jpg" },
     { "id": "21", "imageUrl": "/gallery-21.jpg" },
     { "id": "22", "imageUrl": "/gallery-22.jpg" },
-    { "id": "23", "imageUrl": "/gallery-23.jpg" }
+    { "id": "23", "imageUrl": "/gallery-23.jpg" },
+    { "id": "24", "imageUrl": "/excursion-1.jpg" },
+    { "id": "25", "imageUrl": "/excursion-2.jpg" },
+    { "id": "26", "imageUrl": "/excursion-3.jpg" },
+    { "id": "27", "imageUrl": "/excursion-4.jpg" },
+    { "id": "28", "imageUrl": "/excursion-5.jpg" }
   ],
   "blogPosts": [
     {
