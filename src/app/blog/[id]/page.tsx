@@ -4,6 +4,15 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import BlogSlideshow from '@/components/BlogSlideshow';
 
+export async function generateStaticParams() {
+  const dataPath = path.join(process.cwd(), 'data.json');
+  const fileContents = fs.readFileSync(dataPath, 'utf8');
+  const db = JSON.parse(fileContents);
+  return db.blogPosts?.map((post: any) => ({
+    id: post.id,
+  })) || [];
+}
+
 export default async function BlogPostPage({ params }: { params: Promise<{ id: string }> }) {
   const dataPath = path.join(process.cwd(), 'data.json');
   const fileContents = fs.readFileSync(dataPath, 'utf8');
