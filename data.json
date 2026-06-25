@@ -97,11 +97,11 @@
   ],
   "pastEvents": [
     {
-      "id": "1",
-      "title": "Launching of the STEM Club",
-      "description": "The official launching of our STEM Club by Mr. Rex Eleblu alongside our District Science and Mathematics Coordinator.",
-      "location": "Kpando",
-      "date": "Recent",
+      "id": "2",
+      "title": "Excursion to Wli Waterfalls and Mount Afadjato",
+      "description": "An exciting and educational field trip we took in May to explore the geography, biology, and natural wonders of Wli Waterfalls and Mount Afadjato.",
+      "location": "Wli and Afadjato",
+      "date": "May 9",
       "imageUrls": [
         "/event-placeholder.jpg",
         "/event-placeholder.jpg",
@@ -109,11 +109,11 @@
       ]
     },
     {
-      "id": "2",
-      "title": "Excursion to Wli Waterfalls and Mount Afadjato",
-      "description": "An exciting and educational field trip we took in May to explore the geography, biology, and natural wonders of Wli Waterfalls and Mount Afadjato.",
-      "location": "Wli and Afadjato",
-      "date": "May",
+      "id": "1",
+      "title": "Launching of the STEM Club",
+      "description": "The official launching of our STEM Club by Mr. Rex Eleblu alongside our District Science and Mathematics Coordinator.",
+      "location": "Kpando",
+      "date": "Recent",
       "imageUrls": [
         "/event-placeholder.jpg",
         "/event-placeholder.jpg",
