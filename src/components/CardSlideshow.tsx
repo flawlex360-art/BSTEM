@@ -24,6 +24,7 @@ export default function CardSlideshow({ images, alt, className, style, interval 
           src={img}
           alt={`${alt} slide ${idx + 1}`}
           fill
+          sizes="(max-width: 768px) 100vw, 400px"
           priority={true} // Prioritize loading to prevent blurring
           style={{
             objectFit: 'cover',

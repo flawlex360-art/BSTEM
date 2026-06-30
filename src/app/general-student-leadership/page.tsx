@@ -33,7 +33,7 @@ export default async function GeneralStudentLeadershipPage() {
             {studentLeadership.map((leader: any) => (
               <div key={leader.id} className="leader-card center" style={{ display: 'flex', flexDirection: 'column' }}>
                 <div style={{ position: 'relative', width: '100%', aspectRatio: '1 / 1', overflow: 'hidden', borderRadius: 'var(--radius-md)', marginBottom: '1rem' }}>
-                  <Image src={leader.imageUrl} alt={leader.name} fill style={{ objectFit: 'cover' }} />
+                  <Image src={leader.imageUrl} alt={leader.name} fill sizes="(max-width: 768px) 50vw, 300px" style={{ objectFit: 'cover' }} />
                 </div>
                 <h3>{leader.name}</h3>
                 <h5 style={{ color: 'var(--primary)', marginBottom: '0.5rem', fontSize: '1.3rem', fontWeight: 'bold' }}>{leader.role}</h5>
