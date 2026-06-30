@@ -1,17 +1,17 @@
 'use client';
 import { useState, useEffect } from 'react';
 
-export default function CardSlideshow({ images, alt, className, style }: { images: string[], alt: string, className?: string, style?: React.CSSProperties }) {
+export default function CardSlideshow({ images, alt, className, style, interval = 3000 }: { images: string[], alt: string, className?: string, style?: React.CSSProperties, interval?: number }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     if (images.length <= 1) return;
-    const interval = setInterval(() => {
+    const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 3000); 
+    }, interval); 
     
-    return () => clearInterval(interval);
-  }, [images]);
+    return () => clearInterval(timer);
+  }, [images, interval]);
 
   if (!images || images.length === 0) return null;
 

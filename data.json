@@ -207,6 +207,43 @@
       "imageUrl": "/copatron.jpg"
     }
   ],
+  "studentLeadership": [
+    {
+      "id": "1",
+      "name": "Student Leader 1",
+      "role": "President",
+      "message": "Leading our fellow students to innovate and explore the possibilities of STEM.",
+      "imageUrl": "/event-placeholder.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Student Leader 2",
+      "role": "Vice President",
+      "message": "Supporting our initiatives and helping members achieve their technical goals.",
+      "imageUrl": "/event-placeholder.jpg"
+    },
+    {
+      "id": "3",
+      "name": "Student Leader 3",
+      "role": "Secretary",
+      "message": "Organizing our activities and ensuring smooth communication within the club.",
+      "imageUrl": "/event-placeholder.jpg"
+    },
+    {
+      "id": "4",
+      "name": "Student Leader 4",
+      "role": "Project Coordinator",
+      "message": "Managing hands-on projects and making sure we deliver creative solutions.",
+      "imageUrl": "/event-placeholder.jpg"
+    },
+    {
+      "id": "5",
+      "name": "Student Leader 5",
+      "role": "Financial Secretary",
+      "message": "Handling our resources efficiently to maximize the impact of our club activities.",
+      "imageUrl": "/event-placeholder.jpg"
+    }
+  ],
   "testimonials": [
     {
       "id": "1",

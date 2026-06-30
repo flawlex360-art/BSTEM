@@ -186,6 +186,30 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* Student Leadership */}
+      <section className="section bg-light">
+        <div className="container">
+          <div className="section-header center">
+            <h2>Student Leadership</h2>
+            <p>Meet the dynamic students leading the next generation of innovators</p>
+          </div>
+          <div className="center">
+            <Link href="/student-leadership" style={{ display: 'block', maxWidth: '400px', margin: '0 auto', textDecoration: 'none', color: 'inherit' }} className="card hover-scale">
+              <CardSlideshow 
+                images={db.studentLeadership?.map((s: any) => s.imageUrl) || ['/event-placeholder.jpg']} 
+                alt="Student Leadership" 
+                interval={2000}
+                style={{ width: '100%', height: '300px', borderRadius: 'var(--radius-md) var(--radius-md) 0 0' }}
+              />
+              <div style={{ padding: '1.5rem' }}>
+                <h3 style={{ color: 'var(--primary)' }}>Meet Our Student Leaders</h3>
+                <p style={{ margin: '0.5rem 0 0 0' }}>Click here to view all 5 of our brilliant student leaders driving the club forward!</p>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials */}
       <section className="section bg-light">
         <div className="container">
