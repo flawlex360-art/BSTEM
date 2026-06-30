@@ -89,7 +89,8 @@ export interface DbSchema {
   blogPosts: BlogPost[];
   testimonials: Testimonial[];
   leadership?: LeadershipMember[];
-  studentLeadership?: LeadershipMember[];
+  stemStudentLeadership?: LeadershipMember[];
+  generalStudentLeadership?: LeadershipMember[];
 }
 
 export interface Database {
@@ -103,7 +104,8 @@ export interface Database {
   blogPosts: BlogPost[];
   testimonials: Testimonial[];
   leadership?: LeadershipMember[];
-  studentLeadership?: LeadershipMember[];
+  stemStudentLeadership?: LeadershipMember[];
+  generalStudentLeadership?: LeadershipMember[];
 }
 
 const defaultData: Database = {
@@ -119,7 +121,8 @@ const defaultData: Database = {
   blogPosts: [],
   testimonials: [],
   leadership: [],
-  studentLeadership: []
+  stemStudentLeadership: [],
+  generalStudentLeadership: []
 };
 
 export function getDb(): Database {

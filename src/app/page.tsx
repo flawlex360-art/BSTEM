@@ -190,22 +190,50 @@ export default async function Home() {
       <section className="section bg-light">
         <div className="container">
           <div className="section-header center">
-            <h2>Student Leadership</h2>
-            <p>Meet the dynamic students leading the next generation of innovators</p>
+            <h2>Our Student Leaders</h2>
+            <p>Meet the dynamic students leading the next generation of innovators and our school</p>
           </div>
-          <div className="center">
-            <Link href="/student-leadership" style={{ display: 'block', maxWidth: '400px', margin: '0 auto', textDecoration: 'none', color: 'inherit' }} className="card hover-scale">
+          
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', maxWidth: '900px', margin: '0 auto' }}>
+            
+            {/* STEM Student Leadership */}
+            <Link href="/stem-student-leadership" style={{ display: 'block', textDecoration: 'none', color: 'inherit' }} className="card hover-scale">
               <CardSlideshow 
-                images={db.studentLeadership?.map((s: any) => s.imageUrl) || ['/event-placeholder.jpg']} 
-                alt="Student Leadership" 
+                images={db.stemStudentLeadership && db.stemStudentLeadership.length > 0 ? db.stemStudentLeadership.map((s: any) => s.imageUrl) : ['/event-placeholder.jpg']} 
+                alt="STEM Student Leadership" 
                 interval={2000}
-                style={{ width: '100%', height: '300px', borderRadius: 'var(--radius-md) var(--radius-md) 0 0' }}
+                style={{ width: '100%', height: '250px', borderRadius: 'var(--radius-md) var(--radius-md) 0 0' }}
               />
-              <div style={{ padding: '1.5rem' }}>
-                <h3 style={{ color: 'var(--primary)' }}>Meet Our Student Leaders</h3>
-                <p style={{ margin: '0.5rem 0 0 0' }}>Click here to view all 5 of our brilliant student leaders driving the club forward!</p>
+              <div style={{ padding: '1.5rem', textAlign: 'center' }}>
+                <h3 style={{ color: 'var(--primary)' }}>STEM Student Leadership</h3>
+                <p style={{ margin: '0.5rem 0 0 0', fontSize: '0.95rem' }}>Click to view the club's student leadership team!</p>
               </div>
             </Link>
+
+            {/* General Student Leadership */}
+            <Link href="/general-student-leadership" style={{ display: 'block', textDecoration: 'none', color: 'inherit' }} className="card hover-scale">
+              <CardSlideshow 
+                images={[
+                  '/general-slide-1.jpg',
+                  '/general-slide-2.jpg',
+                  '/general-slide-3.jpg',
+                  '/general-slide-4.jpg',
+                  '/general-slide-5.jpg',
+                  '/general-slide-6.jpg',
+                  '/general-slide-7.jpg',
+                  '/general-slide-8.jpg',
+                  '/general-slide-9.jpg'
+                ].sort(() => Math.random() - 0.5)} 
+                alt="Student Leadership" 
+                interval={2000}
+                style={{ width: '100%', height: '250px', borderRadius: 'var(--radius-md) var(--radius-md) 0 0' }}
+              />
+              <div style={{ padding: '1.5rem', textAlign: 'center' }}>
+                <h3 style={{ color: 'var(--primary)' }}>Student Leadership</h3>
+                <p style={{ margin: '0.5rem 0 0 0', fontSize: '0.95rem' }}>Click to view the general student council and prefects!</p>
+              </div>
+            </Link>
+
           </div>
         </div>
       </section>

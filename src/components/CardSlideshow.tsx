@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 export default function CardSlideshow({ images, alt, className, style, interval = 3000 }: { images: string[], alt: string, className?: string, style?: React.CSSProperties, interval?: number }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -18,16 +19,13 @@ export default function CardSlideshow({ images, alt, className, style, interval 
   return (
     <div className={className} style={{ position: 'relative', overflow: 'hidden', ...style }}>
       {images.map((img, idx) => (
-        <img
+        <Image
           key={idx}
           src={img}
           alt={`${alt} slide ${idx + 1}`}
+          fill
+          priority={true} // Prioritize loading to prevent blurring
           style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
             objectFit: 'cover',
             opacity: idx === currentIndex ? 1 : 0,
             transition: 'opacity 0.8s ease-in-out'

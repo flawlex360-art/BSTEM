@@ -207,41 +207,112 @@
       "imageUrl": "/copatron.jpg"
     }
   ],
-  "studentLeadership": [
+  "stemStudentLeadership": [],
+  "generalStudentLeadership": [
     {
       "id": "1",
-      "name": "Student Leader 1",
-      "role": "President",
-      "message": "Leading our fellow students to innovate and explore the possibilities of STEM.",
-      "imageUrl": "/event-placeholder.jpg"
+      "name": "Aboagye Beatrice",
+      "role": "School Prefect",
+      "message": "Leading by example to inspire my fellow students.",
+      "imageUrl": "/general-leader-1.jpg"
     },
     {
       "id": "2",
-      "name": "Student Leader 2",
-      "role": "Vice President",
-      "message": "Supporting our initiatives and helping members achieve their technical goals.",
-      "imageUrl": "/event-placeholder.jpg"
+      "name": "Agbley Rowland",
+      "role": "Assistant School Prefect",
+      "message": "Supporting our school's vision with dedication.",
+      "imageUrl": "/general-leader-2.jpg"
     },
     {
       "id": "3",
-      "name": "Student Leader 3",
-      "role": "Secretary",
-      "message": "Organizing our activities and ensuring smooth communication within the club.",
-      "imageUrl": "/event-placeholder.jpg"
+      "name": "Akoto Stephen",
+      "role": "Compound Overseer (Male)",
+      "message": "Ensuring a clean and disciplined environment.",
+      "imageUrl": "/general-leader-3.jpg"
     },
     {
       "id": "4",
-      "name": "Student Leader 4",
-      "role": "Project Coordinator",
-      "message": "Managing hands-on projects and making sure we deliver creative solutions.",
-      "imageUrl": "/event-placeholder.jpg"
+      "name": "Kudzo Lamine",
+      "role": "Compound Overseer (Female)",
+      "message": "Working together for a better school compound.",
+      "imageUrl": "/general-leader-4.jpg"
     },
     {
       "id": "5",
-      "name": "Student Leader 5",
-      "role": "Financial Secretary",
-      "message": "Handling our resources efficiently to maximize the impact of our club activities.",
-      "imageUrl": "/event-placeholder.jpg"
+      "name": "Akorli Famous",
+      "role": "Assistant Compound Overseer",
+      "message": "Helping keep our surroundings well maintained.",
+      "imageUrl": "/general-leader-5.jpg"
+    },
+    {
+      "id": "6",
+      "name": "Attah Edinam",
+      "role": "Health Prefect",
+      "message": "Advocating for the health and safety of students.",
+      "imageUrl": "/general-leader-6.jpg"
+    },
+    {
+      "id": "7",
+      "name": "Anyalah Ruth",
+      "role": "Assistant Health Prefect",
+      "message": "Supporting initiatives for student wellness.",
+      "imageUrl": "/general-leader-7.jpg"
+    },
+    {
+      "id": "8",
+      "name": "Aglago Emefa",
+      "role": "Attire Prefect",
+      "message": "Ensuring proper dressing and school discipline.",
+      "imageUrl": "/general-leader-8.jpg"
+    },
+    {
+      "id": "9",
+      "name": "Dzubey Yvonne",
+      "role": "Assistant Attire Prefect",
+      "message": "Assisting to maintain neatness across the school.",
+      "imageUrl": "/general-leader-9.jpg"
+    },
+    {
+      "id": "10",
+      "name": "Dayi Emmanuel",
+      "role": "Sports Prefect (Male)",
+      "message": "Promoting athleticism and team spirit.",
+      "imageUrl": "/general-leader-10.jpg"
+    },
+    {
+      "id": "11",
+      "name": "Gbekle Nice",
+      "role": "Sports Prefect (Female)",
+      "message": "Encouraging female participation in sports.",
+      "imageUrl": "/general-leader-11.jpg"
+    },
+    {
+      "id": "12",
+      "name": "Doh Abigail",
+      "role": "Office and Library",
+      "message": "Keeping our library organized for effective studying.",
+      "imageUrl": "/general-leader-12.jpg"
+    },
+    {
+      "id": "13",
+      "name": "Akpali Kelvin",
+      "role": "Office and Library",
+      "message": "Assisting in office duties and library management.",
+      "imageUrl": "/general-leader-13.jpg"
+    },
+    {
+      "id": "14",
+      "name": "Amenyo Johnson",
+      "role": "Bell Boy",
+      "message": "Ensuring punctuality for all school activities.",
+      "imageUrl": "/general-leader-14.jpg"
+    },
+    {
+      "id": "15",
+      "name": "Mahu Godsway",
+      "role": "Bell Boy",
+      "message": "Keeping the school schedule running smoothly.",
+      "imageUrl": "/general-leader-15.jpg"
     }
   ],
   "testimonials": [

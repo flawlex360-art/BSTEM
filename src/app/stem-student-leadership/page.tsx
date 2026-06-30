@@ -2,13 +2,13 @@ import { getDb } from '@/lib/db';
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Student Leadership | Kpando Anglican STEM Club',
+  title: 'STEM Student Leadership | Kpando Anglican STEM Club',
   description: 'Meet the dynamic students leading the next generation of innovators at Kpando Anglican STEM Club.',
 };
 
-export default async function StudentLeadershipPage() {
+export default async function StemStudentLeadershipPage() {
   const db = getDb();
-  const studentLeadership = db.studentLeadership || [];
+  const studentLeadership = db.stemStudentLeadership || [];
 
   return (
     <div className="animate-fade-in pb-10">
@@ -16,8 +16,8 @@ export default async function StudentLeadershipPage() {
       <section className="hero" style={{ minHeight: '40vh', padding: '6rem 0', backgroundImage: 'url(/hero.jpg)' }}>
         <div className="hero-overlay" style={{ background: 'rgba(0, 0, 0, 0.7)' }}></div>
         <div className="container hero-content center">
-          <h1>Student Leadership</h1>
-          <p className="hero-subtitle">Meet the dynamic students leading the next generation of innovators</p>
+          <h1>STEM Student Leadership</h1>
+          <p className="hero-subtitle">Meet the dynamic students leading the STEM Club</p>
         </div>
       </section>
 

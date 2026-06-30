@@ -48,7 +48,7 @@ export default async function Footer() {
       
       <div className="footer-bottom">
         <div className="container">
-          <p>&copy; {new Date().getFullYear()} {db.settings.siteName}. All Rights Reserved.</p>
+          <p>&copy; 2024 {db.settings.siteName}. All Rights Reserved.</p>
           <div className="footer-bottom-links">
             <Link href="/privacy">Privacy Policy</Link>
           </div>
