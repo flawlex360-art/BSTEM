@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import Image from 'next/image';
 
 export default function LeaderGrid({ leaders }: { leaders: any[] }) {
@@ -37,63 +38,60 @@ export default function LeaderGrid({ leaders }: { leaders: any[] }) {
         ))}
       </div>
 
-      {selectedImage && (
+      {/* Lightbox for single image using createPortal to escape any parent CSS transforms */}
+      {selectedImage && typeof document !== 'undefined' && createPortal(
         <div 
           style={{
             position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100vw',
-            height: '100vh',
-            backgroundColor: 'rgba(0, 0, 0, 0.85)',
-            backdropFilter: 'blur(5px)',
+            inset: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.95)',
             zIndex: 9999,
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
             padding: '1rem'
           }}
-          onClick={() => setSelectedImage(null)}
         >
-          <div style={{ position: 'relative', width: '100%', height: '100%', maxWidth: '1200px', display: 'flex', justifyContent: 'center', alignItems: 'center' }} onClick={e => e.stopPropagation()}>
-            <button 
-              onClick={() => setSelectedImage(null)}
-              style={{
-                position: 'absolute',
-                top: '1rem',
-                right: '1rem',
-                background: 'var(--primary)',
-                color: 'white',
-                border: 'none',
-                borderRadius: '50%',
-                width: '45px',
-                height: '45px',
-                fontSize: '2rem',
-                lineHeight: '1',
-                cursor: 'pointer',
-                zIndex: 10000,
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                boxShadow: '0 4px 15px rgba(0,0,0,0.5)',
-                transition: 'transform 0.2s'
-              }}
-              onMouseOver={e => (e.currentTarget.style.transform = 'scale(1.1)')}
-              onMouseOut={e => (e.currentTarget.style.transform = 'scale(1)')}
-            >
-              &times;
-            </button>
-            <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-               <Image 
-                 src={selectedImage} 
-                 alt="Full screen preview" 
-                 fill
-                 sizes="100vw"
-                 style={{ objectFit: 'contain' }}
-               />
-            </div>
+          {/* Transparent overlay for clicking to close */}
+          <div 
+            style={{ position: 'absolute', inset: 0, cursor: 'zoom-out' }} 
+            onClick={() => setSelectedImage(null)} 
+          />
+          
+          <button 
+            onClick={() => setSelectedImage(null)}
+            style={{
+              position: 'absolute',
+              top: '1.5rem',
+              right: '1.5rem',
+              background: 'var(--primary)',
+              color: 'white',
+              border: 'none',
+              borderRadius: '50%',
+              width: '45px',
+              height: '45px',
+              fontSize: '2rem',
+              lineHeight: '1',
+              cursor: 'pointer',
+              zIndex: 10000,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              boxShadow: '0 4px 15px rgba(0,0,0,0.5)'
+            }}
+          >
+            &times;
+          </button>
+          
+          <div style={{ position: 'relative', width: '100%', height: '100%', maxWidth: '1200px', display: 'flex', justifyContent: 'center', alignItems: 'center', pointerEvents: 'none' }}>
+             <img 
+               src={selectedImage} 
+               alt="Full screen preview" 
+               style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', pointerEvents: 'auto', borderRadius: 'var(--radius-md)', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }}
+             />
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );
