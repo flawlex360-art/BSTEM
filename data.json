@@ -214,7 +214,7 @@
       "name": "Aboagye Beatrice",
       "role": "School Prefect",
       "message": "Leading by example to inspire my fellow students.",
-      "imageUrl": "/general-leader-1.jpg"
+      "imageUrl": "/general-leader-1c.jpg"
     },
     {
       "id": "2",
@@ -273,6 +273,13 @@
       "imageUrl": "/general-leader-9.jpg"
     },
     {
+      "id": "osborn",
+      "name": "Wormadey Osborn",
+      "role": "Attire Prefect (Male)",
+      "message": "Ensuring smart and proper dressing among the male students.",
+      "imageUrl": "/general-leader-osborn.jpg"
+    },
+    {
       "id": "10",
       "name": "Dayi Emmanuel",
       "role": "Sports Prefect (Male)",
@@ -285,6 +292,55 @@
       "role": "Sports Prefect (Female)",
       "message": "Encouraging female participation in sports.",
       "imageUrl": "/general-leader-11.jpg"
+    },
+    {
+      "id": "stephany",
+      "name": "Ahlidzi Stephany",
+      "role": "Canteen Prefect",
+      "message": "Ensuring orderliness and hygiene during meals.",
+      "imageUrl": "/general-leader-stephany.jpg"
+    },
+    {
+      "id": "matilda",
+      "name": "Dzorka Matilda",
+      "role": "Language Prefect",
+      "message": "Promoting clear communication and language skills.",
+      "imageUrl": "/general-leader-matilda.jpg"
+    },
+    {
+      "id": "collins",
+      "name": "Avornyo Collins",
+      "role": "Language Prefect",
+      "message": "Encouraging a culture of reading and debate.",
+      "imageUrl": "/general-leader-collins.jpg"
+    },
+    {
+      "id": "christable",
+      "name": "Gagodo Christable",
+      "role": "Language Prefect",
+      "message": "Fostering excellent public speaking abilities.",
+      "imageUrl": "/general-leader-christable.jpg"
+    },
+    {
+      "id": "joel",
+      "name": "Osabutey Joel",
+      "role": "Language Prefect",
+      "message": "Leading the school's literacy programs.",
+      "imageUrl": "/general-leader-joel.jpg"
+    },
+    {
+      "id": "esther",
+      "name": "Mikorda Esther",
+      "role": "Chaplain",
+      "message": "Guiding the spiritual life and morals of the students.",
+      "imageUrl": "/general-leader-esther.jpg"
+    },
+    {
+      "id": "gifty",
+      "name": "Akewnsi Gifty",
+      "role": "Chaplain",
+      "message": "Fostering a supportive and faith-filled community.",
+      "imageUrl": "/general-leader-gifty.jpg"
     },
     {
       "id": "12",
