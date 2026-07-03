@@ -1,10 +1,17 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useTheme } from 'next-themes';
 import './Navbar.css';
 
 export default function NavbarClient({ siteName }: { siteName: string }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <nav className="navbar">
@@ -33,6 +40,17 @@ export default function NavbarClient({ siteName }: { siteName: string }) {
               <Link href="/events/past" onClick={() => setIsOpen(false)}>Past Events</Link>
             </div>
           </div>
+          
+          {mounted && (
+            <button
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className="nav-link"
+              style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.2rem', padding: '0.5rem', display: 'flex', alignItems: 'center' }}
+              aria-label="Toggle Dark Mode"
+            >
+              {theme === 'dark' ? '☀️' : '🌙'}
+            </button>
+          )}
         </div>
       </div>
     </nav>
