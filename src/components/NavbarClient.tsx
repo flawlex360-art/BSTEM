@@ -1,17 +1,19 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
 import './Navbar.css';
 
+const emptySubscribe = () => () => {};
+
 export default function NavbarClient({ siteName }: { siteName: string }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
   const { theme, setTheme } = useTheme();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   return (
     <nav className="navbar">

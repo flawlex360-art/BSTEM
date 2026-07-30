@@ -11,6 +11,9 @@ export default function GalleryGrid({ images }: { images: GalleryImage[] }) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
+  const nextImage = () => setSelectedIndex((prev) => (prev !== null ? (prev + 1) % images.length : null));
+  const prevImage = () => setSelectedIndex((prev) => (prev !== null ? (prev - 1 + images.length) % images.length : null));
+
   useEffect(() => {
     if (selectedIndex === null) return;
 
@@ -27,9 +30,6 @@ export default function GalleryGrid({ images }: { images: GalleryImage[] }) {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedIndex, images.length]);
-
-  const nextImage = () => setSelectedIndex((prev) => (prev !== null ? (prev + 1) % images.length : null));
-  const prevImage = () => setSelectedIndex((prev) => (prev !== null ? (prev - 1 + images.length) % images.length : null));
 
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStartX(e.targetTouches[0].clientX);

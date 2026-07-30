@@ -133,7 +133,7 @@ export function getDb(): Database {
   try {
     const raw = fs.readFileSync(dataFile, 'utf-8');
     return JSON.parse(raw) as Database;
-  } catch (e) {
+  } catch {
     return defaultData;
   }
 }
