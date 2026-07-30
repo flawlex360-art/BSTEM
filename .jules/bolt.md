@@ -1,0 +1,3 @@
+## 2026-07-30 - Modern Hydration Detection over useEffect + State
+**Learning:** In Next.js SSR apps, detecting client-side mounting with the common `useState` + `useEffect` (e.g. `setMounted(true)`) pattern triggers a synchronous post-hydration update. This forces a second render cycle (cascading render), slowing down Time to Interactive and potentially causing cumulative layout shift or visual flickering. Utilizing React 18's `useSyncExternalStore` provides a seamless hydration checkpoint with no state updates, eliminating unnecessary re-renders.
+**Action:** Replace `useEffect` client-mounting checks with `useSyncExternalStore(() => () => {}, () => true, () => false)` to avoid cascading render cycles on page load.
