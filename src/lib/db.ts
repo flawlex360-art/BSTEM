@@ -125,19 +125,34 @@ const defaultData: Database = {
   generalStudentLeadership: []
 };
 
+// Global in-memory cache to optimize database retrieval performance.
+// Since Next.js utilizes Server Components and layouts that can fetch settings/data on almost every render,
+// caching the JSON database in memory avoids redundant synchronous disk I/O and JSON parsing overhead.
+let cachedDb: Database | null = null;
+
 export function getDb(): Database {
+  // If we already have the database parsed and in memory, return it instantly
+  if (cachedDb) {
+    return cachedDb;
+  }
+
   if (!fs.existsSync(dataFile)) {
     fs.writeFileSync(dataFile, JSON.stringify(defaultData, null, 2));
+    cachedDb = defaultData;
     return defaultData;
   }
   try {
     const raw = fs.readFileSync(dataFile, 'utf-8');
-    return JSON.parse(raw) as Database;
-  } catch (e) {
+    cachedDb = JSON.parse(raw) as Database;
+    return cachedDb;
+  } catch {
+    cachedDb = defaultData;
     return defaultData;
   }
 }
 
 export function saveDb(data: Database) {
+  // Update the in-memory cache and write through to the disk to keep data synchronized
+  cachedDb = data;
   fs.writeFileSync(dataFile, JSON.stringify(data, null, 2));
 }

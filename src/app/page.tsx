@@ -3,7 +3,6 @@ import Link from 'next/link';
 
 import HeroSlideshow from '@/components/HeroSlideshow';
 import CardSlideshow from '@/components/CardSlideshow';
-import InteractiveGallery from '@/components/InteractiveGallery';
 import GalleryMarquee from '@/components/GalleryMarquee';
 
 export default async function Home() {
@@ -179,7 +178,7 @@ export default async function Home() {
                 </div>
                 <h3>{leader.name}</h3>
                 <h5 style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}>{leader.role}</h5>
-                <p style={{ fontSize: '0.9rem', opacity: 0.9 }}>"{leader.message}"</p>
+                <p style={{ fontSize: '0.9rem', opacity: 0.9 }}>&ldquo;{leader.message}&rdquo;</p>
               </div>
             ))}
           </div>
@@ -199,14 +198,14 @@ export default async function Home() {
             {/* STEM Student Leadership */}
             <Link href="/stem-student-leadership" style={{ display: 'block', textDecoration: 'none', color: 'inherit' }} className="card hover-scale">
               <CardSlideshow 
-                images={db.stemStudentLeadership && db.stemStudentLeadership.length > 0 ? db.stemStudentLeadership.map((s: any) => s.imageUrl) : ['/event-placeholder.jpg']} 
+                images={db.stemStudentLeadership && db.stemStudentLeadership.length > 0 ? db.stemStudentLeadership.map((s: { imageUrl: string }) => s.imageUrl) : ['/event-placeholder.jpg']}
                 alt="STEM Student Leadership" 
                 interval={2000}
                 style={{ width: '100%', height: '250px', borderRadius: 'var(--radius-md) var(--radius-md) 0 0' }}
               />
               <div style={{ padding: '1.5rem', textAlign: 'center' }}>
                 <h3 style={{ color: 'var(--primary)' }}>STEM Student Leadership</h3>
-                <p style={{ margin: '0.5rem 0 0 0', fontSize: '0.95rem' }}>Click to view the club's student leadership team!</p>
+                <p style={{ margin: '0.5rem 0 0 0', fontSize: '0.95rem' }}>Click to view the club&apos;s student leadership team!</p>
               </div>
             </Link>
 
@@ -223,7 +222,7 @@ export default async function Home() {
                   '/general-slide-7.jpg',
                   '/general-slide-8.jpg',
                   '/general-slide-9.jpg'
-                ].sort(() => Math.random() - 0.5)} 
+                ]}
                 alt="Student Leadership" 
                 interval={2000}
                 style={{ width: '100%', height: '250px', borderRadius: 'var(--radius-md) var(--radius-md) 0 0' }}
@@ -248,7 +247,7 @@ export default async function Home() {
           <div className="testimonials-grid">
             {testimonials.map(t => (
               <div key={t.id} className="card testimonial-card">
-                <p>"{t.quote}"</p>
+                <p>&ldquo;{t.quote}&rdquo;</p>
                 <div className="testimonial-author">- {t.author}</div>
               </div>
             ))}
