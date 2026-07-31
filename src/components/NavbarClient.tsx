@@ -10,7 +10,11 @@ export default function NavbarClient({ siteName }: { siteName: string }) {
   const { theme, setTheme } = useTheme();
 
   useEffect(() => {
-    setMounted(true);
+    // Defer state update to avoid synchronous cascading renders in React 19
+    const handle = requestAnimationFrame(() => {
+      setMounted(true);
+    });
+    return () => cancelAnimationFrame(handle);
   }, []);
 
   return (
