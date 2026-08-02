@@ -1,0 +1,3 @@
+## 2025-06-25 - [In-memory Write-through JSON Database Caching]
+**Learning:** Found that `getDb` parsed `data.json` on every single invocation synchronously, causing multiple synchronous `fs.readFileSync` calls on every page/component render. This heavily blocked the Node.js event loop on the backend/SSR phase. Introducing a simple in-memory write-through cache completely eliminates redundant disk read and parsing overhead while keeping memory usage extremely low.
+**Action:** Always cache file-based data structures in global module scope for server-side operations if they do not change frequently or are managed/written through the same server process.
