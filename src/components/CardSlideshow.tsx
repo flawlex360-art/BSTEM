@@ -4,6 +4,7 @@ import Image from 'next/image';
 
 export default function CardSlideshow({ images, alt, className, style, interval = 3000 }: { images: string[], alt: string, className?: string, style?: React.CSSProperties, interval?: number }) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const imagesSerialized = images.join(',');
 
   useEffect(() => {
     if (images.length <= 1) return;
@@ -12,7 +13,8 @@ export default function CardSlideshow({ images, alt, className, style, interval 
     }, interval); 
     
     return () => clearInterval(timer);
-  }, [images, interval]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [imagesSerialized, interval]);
 
   if (!images || images.length === 0) return null;
 
