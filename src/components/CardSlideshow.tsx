@@ -6,13 +6,14 @@ export default function CardSlideshow({ images, alt, className, style, interval 
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    if (images.length <= 1) return;
+    if (!images || images.length <= 1) return;
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
     }, interval); 
     
     return () => clearInterval(timer);
-  }, [images, interval]);
+    // Bolt ⚡ Optimization: Serialize array reference as a primitive string to prevent unnecessary interval resets on prop reference changes
+  }, [images?.join(','), interval]);
 
   if (!images || images.length === 0) return null;
 
