@@ -5,6 +5,9 @@ import Image from 'next/image';
 export default function CardSlideshow({ images, alt, className, style, interval = 3000 }: { images: string[], alt: string, className?: string, style?: React.CSSProperties, interval?: number }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Serialize images array to primitive string to prevent redundant interval setups/teardowns when array references change
+  const serializedImages = images?.join(',') || '';
+
   useEffect(() => {
     if (images.length <= 1) return;
     const timer = setInterval(() => {
@@ -12,7 +15,8 @@ export default function CardSlideshow({ images, alt, className, style, interval 
     }, interval); 
     
     return () => clearInterval(timer);
-  }, [images, interval]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [serializedImages, interval]);
 
   if (!images || images.length === 0) return null;
 

@@ -125,14 +125,23 @@ const defaultData: Database = {
   generalStudentLeadership: []
 };
 
+// Module-level cache to hold parsed database in memory.
+// This implements a write-through caching pattern to eliminate redundant synchronous disk I/O and JSON parsing on read paths.
+let cachedData: Database | null = null;
+
 export function getDb(): Database {
+  if (cachedData) {
+    return cachedData;
+  }
   if (!fs.existsSync(dataFile)) {
     fs.writeFileSync(dataFile, JSON.stringify(defaultData, null, 2));
+    cachedData = defaultData;
     return defaultData;
   }
   try {
     const raw = fs.readFileSync(dataFile, 'utf-8');
-    return JSON.parse(raw) as Database;
+    cachedData = JSON.parse(raw) as Database;
+    return cachedData;
   } catch (e) {
     return defaultData;
   }
@@ -140,4 +149,6 @@ export function getDb(): Database {
 
 export function saveDb(data: Database) {
   fs.writeFileSync(dataFile, JSON.stringify(data, null, 2));
+  // Keep cache synchronized with disk (write-through cache)
+  cachedData = data;
 }
