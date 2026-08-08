@@ -125,19 +125,31 @@ const defaultData: Database = {
   generalStudentLeadership: []
 };
 
+// In-memory write-through cache to avoid redundant synchronous disk read and parsing operations.
+let cachedData: Database | null = null;
+
 export function getDb(): Database {
+  if (cachedData !== null) {
+    return cachedData;
+  }
+
   if (!fs.existsSync(dataFile)) {
     fs.writeFileSync(dataFile, JSON.stringify(defaultData, null, 2));
+    cachedData = defaultData;
     return defaultData;
   }
   try {
     const raw = fs.readFileSync(dataFile, 'utf-8');
-    return JSON.parse(raw) as Database;
+    const parsed = JSON.parse(raw) as Database;
+    cachedData = parsed;
+    return parsed;
   } catch (e) {
+    cachedData = defaultData;
     return defaultData;
   }
 }
 
 export function saveDb(data: Database) {
+  cachedData = data;
   fs.writeFileSync(dataFile, JSON.stringify(data, null, 2));
 }
