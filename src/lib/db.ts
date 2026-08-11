@@ -125,19 +125,32 @@ const defaultData: Database = {
   generalStudentLeadership: []
 };
 
+// Module-level in-memory cache to avoid redundant synchronous file-system read
+// and JSON parsing operations on multiple db queries in the same process/request.
+let cachedDb: Database | null = null;
+
 export function getDb(): Database {
+  if (cachedDb) {
+    return cachedDb;
+  }
+
   if (!fs.existsSync(dataFile)) {
     fs.writeFileSync(dataFile, JSON.stringify(defaultData, null, 2));
+    cachedDb = defaultData;
     return defaultData;
   }
   try {
     const raw = fs.readFileSync(dataFile, 'utf-8');
-    return JSON.parse(raw) as Database;
+    cachedDb = JSON.parse(raw) as Database;
+    return cachedDb;
   } catch (e) {
+    cachedDb = defaultData;
     return defaultData;
   }
 }
 
 export function saveDb(data: Database) {
+  // Update cache immediately to ensure write-through consistency
+  cachedDb = data;
   fs.writeFileSync(dataFile, JSON.stringify(data, null, 2));
 }
