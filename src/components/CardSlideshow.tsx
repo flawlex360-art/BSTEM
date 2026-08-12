@@ -5,6 +5,9 @@ import Image from 'next/image';
 export default function CardSlideshow({ images, alt, className, style, interval = 3000 }: { images: string[], alt: string, className?: string, style?: React.CSSProperties, interval?: number }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Serialize array images prop into a primitive string to avoid redundant effect triggers when reference changes
+  const serializedImages = images?.join(',') || '';
+
   useEffect(() => {
     if (images.length <= 1) return;
     const timer = setInterval(() => {
@@ -12,7 +15,7 @@ export default function CardSlideshow({ images, alt, className, style, interval 
     }, interval); 
     
     return () => clearInterval(timer);
-  }, [images, interval]);
+  }, [serializedImages, interval, images.length]);
 
   if (!images || images.length === 0) return null;
 
