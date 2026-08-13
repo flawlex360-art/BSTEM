@@ -1,0 +1,3 @@
+## 2025-03-08 - [Optimizing Slideshow React Effects via Array Serialization]
+**Learning:** React components that accept arrays as props (like slideshows) and set up timers or listeners based on those arrays can suffer from redundant teardowns and setups if parent components pass new array references on every render.
+**Action:** Serialize the array props to a primitive string representation (such as `.join(',')`) and use that serialized string along with its length in the `useEffect` dependency array. This guarantees that the effect is only re-run when the contents of the array actually change, not when only the array reference changes.
