@@ -1,0 +1,3 @@
+## 2025-05-18 - Database I/O Caching and Array-based React hook dependencies
+**Learning:** Reading and parsing files synchronously from disk on every database access introduces a massive bottleneck. Introducing an in-memory write-through cache drastically reduces this overhead. In React components, passing arrays as dependencies to `useEffect` causes redundant triggers because array references are unstable across renders; serializing array contents to a primitive string solves this.
+**Action:** When working on file-based datastores, implement in-memory write-through caches. When using collections/arrays as React hook dependencies, serialize them to primitive strings first.
