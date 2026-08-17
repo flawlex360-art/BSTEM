@@ -125,19 +125,34 @@ const defaultData: Database = {
   generalStudentLeadership: []
 };
 
+let cachedDb: Database | null = null;
+
+/**
+ * Retrieves the database instance.
+ * Uses an in-memory write-through cache with `structuredClone` to prevent repeated synchronous disk I/O
+ * (`fs.readFileSync`) on every call while safely isolating returned objects against unintended mutations.
+ */
 export function getDb(): Database {
+  if (cachedDb) {
+    return structuredClone(cachedDb);
+  }
+
   if (!fs.existsSync(dataFile)) {
     fs.writeFileSync(dataFile, JSON.stringify(defaultData, null, 2));
-    return defaultData;
+    cachedDb = defaultData;
+    return structuredClone(defaultData);
   }
   try {
     const raw = fs.readFileSync(dataFile, 'utf-8');
-    return JSON.parse(raw) as Database;
-  } catch (e) {
-    return defaultData;
+    cachedDb = JSON.parse(raw) as Database;
+    return structuredClone(cachedDb);
+  } catch {
+    cachedDb = defaultData;
+    return structuredClone(defaultData);
   }
 }
 
 export function saveDb(data: Database) {
+  cachedDb = structuredClone(data);
   fs.writeFileSync(dataFile, JSON.stringify(data, null, 2));
 }
