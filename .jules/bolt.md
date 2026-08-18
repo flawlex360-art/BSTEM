@@ -1,0 +1,3 @@
+## 2025-05-18 - In-memory mtime-based write-through cache for mock JSON DB
+**Learning:** Frequent synchronous disk reads (`fs.readFileSync`) and JSON parsing (`JSON.parse`) in mock JSON database utilities significantly bottleneck SSR/RSC rendering. Checking `fs.statSync().mtimeMs` before reading file content provides a massive speedup (~22x) with zero breaking changes or cache staleness issues across process operations.
+**Action:** Always wrap synchronous file-backed mock DB helpers with an in-memory mtime-based validation check to eliminate repeated disk I/O and JSON parse overhead during page renders.

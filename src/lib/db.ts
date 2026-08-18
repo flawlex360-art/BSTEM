@@ -125,19 +125,42 @@ const defaultData: Database = {
   generalStudentLeadership: []
 };
 
+// Bolt ⚡ Optimization: In-memory cache for synchronous JSON database reads and writes.
+// Prevents costly blocking synchronous disk reads (`fs.readFileSync`) and JSON parsing (`JSON.parse`)
+// on every single server component render request across pages and components.
+let cachedDb: Database | null = null;
+let cachedMtimeMs: number | null = null;
+
 export function getDb(): Database {
   if (!fs.existsSync(dataFile)) {
     fs.writeFileSync(dataFile, JSON.stringify(defaultData, null, 2));
+    cachedDb = defaultData;
+    cachedMtimeMs = fs.statSync(dataFile).mtimeMs;
     return defaultData;
   }
+
   try {
+    const stat = fs.statSync(dataFile);
+    if (cachedDb !== null && cachedMtimeMs === stat.mtimeMs) {
+      return cachedDb;
+    }
+
     const raw = fs.readFileSync(dataFile, 'utf-8');
-    return JSON.parse(raw) as Database;
-  } catch (e) {
+    cachedDb = JSON.parse(raw) as Database;
+    cachedMtimeMs = stat.mtimeMs;
+    return cachedDb;
+  } catch {
     return defaultData;
   }
 }
 
 export function saveDb(data: Database) {
   fs.writeFileSync(dataFile, JSON.stringify(data, null, 2));
+  try {
+    cachedDb = data;
+    cachedMtimeMs = fs.statSync(dataFile).mtimeMs;
+  } catch {
+    cachedDb = null;
+    cachedMtimeMs = null;
+  }
 }
