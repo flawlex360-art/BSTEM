@@ -1,0 +1,3 @@
+## 2025-05-18 - In-Memory Write-Through Cache for File-Backed Database
+**Learning:** In file-backed database layer (`data.json` accessed synchronously via `fs.readFileSync`), every call to `getDb()` across layouts, components, and API routes incurs synchronous I/O blocking and JSON deserialization overhead. Introducing an in-memory cache variable with write-through semantics on `saveDb()` eliminates redundant disk reads and parsing while preserving simple synchronous file persistence.
+**Action:** Always maintain an in-memory cached instance when using synchronous JSON file storage to avoid main thread I/O latency on repeated page renders or data queries.
