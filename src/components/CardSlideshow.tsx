@@ -12,7 +12,7 @@ export default function CardSlideshow({ images, alt, className, style, interval 
     }, interval); 
     
     return () => clearInterval(timer);
-  }, [images, interval]);
+  }, [images.length, interval]);
 
   if (!images || images.length === 0) return null;
 
@@ -25,7 +25,7 @@ export default function CardSlideshow({ images, alt, className, style, interval 
           alt={`${alt} slide ${idx + 1}`}
           fill
           sizes="(max-width: 768px) 100vw, 400px"
-          priority={true} // Prioritize loading to prevent blurring
+          priority={idx === 0} // Only prioritize loading initial active slide to prevent preloading overhead
           style={{
             objectFit: 'cover',
             opacity: idx === currentIndex ? 1 : 0,
