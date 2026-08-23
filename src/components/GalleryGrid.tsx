@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 
 interface GalleryImage {
@@ -10,6 +10,9 @@ interface GalleryImage {
 export default function GalleryGrid({ images }: { images: GalleryImage[] }) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
+
+  const nextImage = useCallback(() => setSelectedIndex((prev) => (prev !== null ? (prev + 1) % images.length : null)), [images.length]);
+  const prevImage = useCallback(() => setSelectedIndex((prev) => (prev !== null ? (prev - 1 + images.length) % images.length : null)), [images.length]);
 
   useEffect(() => {
     if (selectedIndex === null) return;
@@ -26,10 +29,7 @@ export default function GalleryGrid({ images }: { images: GalleryImage[] }) {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedIndex, images.length]);
-
-  const nextImage = () => setSelectedIndex((prev) => (prev !== null ? (prev + 1) % images.length : null));
-  const prevImage = () => setSelectedIndex((prev) => (prev !== null ? (prev - 1 + images.length) % images.length : null));
+  }, [selectedIndex, nextImage, prevImage]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStartX(e.targetTouches[0].clientX);
