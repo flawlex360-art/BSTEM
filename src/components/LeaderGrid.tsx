@@ -2,8 +2,9 @@
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import Image from 'next/image';
+import { LeadershipMember } from '@/lib/db';
 
-export default function LeaderGrid({ leaders }: { leaders: any[] }) {
+export default function LeaderGrid({ leaders }: { leaders: LeadershipMember[] }) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   // Prevent scrolling on the body when modal is open
@@ -21,7 +22,7 @@ export default function LeaderGrid({ leaders }: { leaders: any[] }) {
   return (
     <>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem', marginTop: '3rem' }}>
-        {leaders.map((leader: any) => (
+        {leaders.map((leader) => (
           <div key={leader.id} className="leader-card center" style={{ display: 'flex', flexDirection: 'column' }}>
             <div 
               onClick={() => setSelectedImage(leader.imageUrl)} 
@@ -33,7 +34,7 @@ export default function LeaderGrid({ leaders }: { leaders: any[] }) {
               <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>{leader.name}</h3>
             </div>
             <h5 style={{ color: 'var(--primary)', marginBottom: '0.5rem', fontSize: '1.3rem', fontWeight: 'bold' }}>{leader.role}</h5>
-            <p style={{ fontSize: '1rem', opacity: 0.9 }}>"{leader.message}"</p>
+            <p style={{ fontSize: '1rem', opacity: 0.9 }}>&quot;{leader.message}&quot;</p>
           </div>
         ))}
       </div>

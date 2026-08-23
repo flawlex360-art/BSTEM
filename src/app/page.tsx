@@ -1,10 +1,21 @@
-import { getDb } from '@/lib/db';
+import { getDb, LeadershipMember } from '@/lib/db';
 import Link from 'next/link';
 
 import HeroSlideshow from '@/components/HeroSlideshow';
 import CardSlideshow from '@/components/CardSlideshow';
-import InteractiveGallery from '@/components/InteractiveGallery';
 import GalleryMarquee from '@/components/GalleryMarquee';
+
+const generalLeadershipImages = [
+  '/general-slide-1.jpg',
+  '/general-slide-2.jpg',
+  '/general-slide-3.jpg',
+  '/general-slide-4.jpg',
+  '/general-slide-5.jpg',
+  '/general-slide-6.jpg',
+  '/general-slide-7.jpg',
+  '/general-slide-8.jpg',
+  '/general-slide-9.jpg'
+];
 
 export default async function Home() {
   const db = getDb();
@@ -179,7 +190,7 @@ export default async function Home() {
                 </div>
                 <h3>{leader.name}</h3>
                 <h5 style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}>{leader.role}</h5>
-                <p style={{ fontSize: '0.9rem', opacity: 0.9 }}>"{leader.message}"</p>
+                <p style={{ fontSize: '0.9rem', opacity: 0.9 }}>&quot;{leader.message}&quot;</p>
               </div>
             ))}
           </div>
@@ -199,31 +210,21 @@ export default async function Home() {
             {/* STEM Student Leadership */}
             <Link href="/stem-student-leadership" style={{ display: 'block', textDecoration: 'none', color: 'inherit' }} className="card hover-scale">
               <CardSlideshow 
-                images={db.stemStudentLeadership && db.stemStudentLeadership.length > 0 ? db.stemStudentLeadership.map((s: any) => s.imageUrl) : ['/event-placeholder.jpg']} 
+                images={db.stemStudentLeadership && db.stemStudentLeadership.length > 0 ? db.stemStudentLeadership.map((s: LeadershipMember) => s.imageUrl) : ['/event-placeholder.jpg']}
                 alt="STEM Student Leadership" 
                 interval={2000}
                 style={{ width: '100%', height: '250px', borderRadius: 'var(--radius-md) var(--radius-md) 0 0' }}
               />
               <div style={{ padding: '1.5rem', textAlign: 'center' }}>
                 <h3 style={{ color: 'var(--primary)' }}>STEM Student Leadership</h3>
-                <p style={{ margin: '0.5rem 0 0 0', fontSize: '0.95rem' }}>Click to view the club's student leadership team!</p>
+                <p style={{ margin: '0.5rem 0 0 0', fontSize: '0.95rem' }}>Click to view the club&apos;s student leadership team!</p>
               </div>
             </Link>
 
             {/* General Student Leadership */}
             <Link href="/general-student-leadership" style={{ display: 'block', textDecoration: 'none', color: 'inherit' }} className="card hover-scale">
               <CardSlideshow 
-                images={[
-                  '/general-slide-1.jpg',
-                  '/general-slide-2.jpg',
-                  '/general-slide-3.jpg',
-                  '/general-slide-4.jpg',
-                  '/general-slide-5.jpg',
-                  '/general-slide-6.jpg',
-                  '/general-slide-7.jpg',
-                  '/general-slide-8.jpg',
-                  '/general-slide-9.jpg'
-                ].sort(() => Math.random() - 0.5)} 
+                images={generalLeadershipImages}
                 alt="Student Leadership" 
                 interval={2000}
                 style={{ width: '100%', height: '250px', borderRadius: 'var(--radius-md) var(--radius-md) 0 0' }}
@@ -248,7 +249,7 @@ export default async function Home() {
           <div className="testimonials-grid">
             {testimonials.map(t => (
               <div key={t.id} className="card testimonial-card">
-                <p>"{t.quote}"</p>
+                <p>&quot;{t.quote}&quot;</p>
                 <div className="testimonial-author">- {t.author}</div>
               </div>
             ))}
