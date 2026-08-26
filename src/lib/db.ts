@@ -125,19 +125,30 @@ const defaultData: Database = {
   generalStudentLeadership: []
 };
 
+// ⚡ Bolt: In-memory cache to avoid repeated synchronous disk reads (fs.readFileSync) and JSON parsing on every request
+let cachedDb: Database | null = null;
+
 export function getDb(): Database {
+  if (cachedDb) {
+    return cachedDb;
+  }
+
   if (!fs.existsSync(dataFile)) {
     fs.writeFileSync(dataFile, JSON.stringify(defaultData, null, 2));
-    return defaultData;
+    cachedDb = defaultData;
+    return cachedDb;
   }
   try {
     const raw = fs.readFileSync(dataFile, 'utf-8');
-    return JSON.parse(raw) as Database;
+    cachedDb = JSON.parse(raw) as Database;
+    return cachedDb;
   } catch (e) {
-    return defaultData;
+    cachedDb = defaultData;
+    return cachedDb;
   }
 }
 
 export function saveDb(data: Database) {
   fs.writeFileSync(dataFile, JSON.stringify(data, null, 2));
+  cachedDb = data;
 }
