@@ -6,13 +6,13 @@ export default function CardSlideshow({ images, alt, className, style, interval 
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    if (images.length <= 1) return;
+    if (!images || images.length <= 1) return;
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
     }, interval); 
     
     return () => clearInterval(timer);
-  }, [images, interval]);
+  }, [images.length, interval]);
 
   if (!images || images.length === 0) return null;
 
@@ -25,7 +25,7 @@ export default function CardSlideshow({ images, alt, className, style, interval 
           alt={`${alt} slide ${idx + 1}`}
           fill
           sizes="(max-width: 768px) 100vw, 400px"
-          priority={true} // Prioritize loading to prevent blurring
+          priority={idx === 0} // Only prioritize loading the initial visible slide to prevent preloading hidden slides
           style={{
             objectFit: 'cover',
             opacity: idx === currentIndex ? 1 : 0,

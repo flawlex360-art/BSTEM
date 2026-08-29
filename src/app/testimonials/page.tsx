@@ -1,10 +1,7 @@
-import fs from 'fs';
-import path from 'path';
+import { getDb } from '@/lib/db';
 
 export default async function TestimonialsPage() {
-  const dataPath = path.join(process.cwd(), 'data.json');
-  const fileContents = fs.readFileSync(dataPath, 'utf8');
-  const db = JSON.parse(fileContents);
+  const db = getDb();
   const testimonials = db.testimonials || [];
 
   return (

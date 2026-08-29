@@ -55,6 +55,8 @@ export interface BlogPost {
   content: string;
   date: string;
   imageUrl: string;
+  imageUrls?: string[];
+  author?: string;
 }
 
 export interface Testimonial {
@@ -125,19 +127,31 @@ const defaultData: Database = {
   generalStudentLeadership: []
 };
 
+// In-memory write-through cache for DB to avoid redundant synchronous disk read and parsing operations
+let cachedDb: Database | null = null;
+
 export function getDb(): Database {
+  if (cachedDb) {
+    return cachedDb;
+  }
+
   if (!fs.existsSync(dataFile)) {
     fs.writeFileSync(dataFile, JSON.stringify(defaultData, null, 2));
-    return defaultData;
+    cachedDb = defaultData;
+    return cachedDb;
   }
+
   try {
     const raw = fs.readFileSync(dataFile, 'utf-8');
-    return JSON.parse(raw) as Database;
-  } catch (e) {
-    return defaultData;
+    cachedDb = JSON.parse(raw) as Database;
+    return cachedDb;
+  } catch {
+    cachedDb = defaultData;
+    return cachedDb;
   }
 }
 
 export function saveDb(data: Database) {
+  cachedDb = data;
   fs.writeFileSync(dataFile, JSON.stringify(data, null, 2));
 }

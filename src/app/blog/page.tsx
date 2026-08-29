@@ -1,12 +1,8 @@
-import fs from 'fs';
-import path from 'path';
 import Link from 'next/link';
-import BlogSlideshow from '@/components/BlogSlideshow';
+import { getDb } from '@/lib/db';
 
 export default async function BlogPage() {
-  const dataPath = path.join(process.cwd(), 'data.json');
-  const fileContents = fs.readFileSync(dataPath, 'utf8');
-  const db = JSON.parse(fileContents);
+  const db = getDb();
   const blogPosts = db.blogPosts || [];
 
   return (

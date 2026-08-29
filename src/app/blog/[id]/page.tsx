@@ -1,22 +1,17 @@
-import fs from 'fs';
-import path from 'path';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import BlogSlideshow from '@/components/BlogSlideshow';
+import { getDb } from '@/lib/db';
 
 export async function generateStaticParams() {
-  const dataPath = path.join(process.cwd(), 'data.json');
-  const fileContents = fs.readFileSync(dataPath, 'utf8');
-  const db = JSON.parse(fileContents);
+  const db = getDb();
   return db.blogPosts?.map((post: any) => ({
     id: post.id,
   })) || [];
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ id: string }> }) {
-  const dataPath = path.join(process.cwd(), 'data.json');
-  const fileContents = fs.readFileSync(dataPath, 'utf8');
-  const db = JSON.parse(fileContents);
+  const db = getDb();
   
   const resolvedParams = await params;
   const post = db.blogPosts?.find((p: any) => p.id === resolvedParams.id);
