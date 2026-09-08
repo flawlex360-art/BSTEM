@@ -5,6 +5,8 @@ import Image from 'next/image';
 export default function CardSlideshow({ images, alt, className, style, interval = 3000 }: { images: string[], alt: string, className?: string, style?: React.CSSProperties, interval?: number }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Performance optimization: Depend on images.length instead of images array reference
+  // to avoid resetting the slideshow interval whenever parent renders re-allocate array references.
   useEffect(() => {
     if (images.length <= 1) return;
     const timer = setInterval(() => {
@@ -12,7 +14,7 @@ export default function CardSlideshow({ images, alt, className, style, interval 
     }, interval); 
     
     return () => clearInterval(timer);
-  }, [images, interval]);
+  }, [images.length, interval]);
 
   if (!images || images.length === 0) return null;
 
@@ -25,7 +27,10 @@ export default function CardSlideshow({ images, alt, className, style, interval 
           alt={`${alt} slide ${idx + 1}`}
           fill
           sizes="(max-width: 768px) 100vw, 400px"
-          priority={true} // Prioritize loading to prevent blurring
+          // Performance optimization: Only set priority=true for the initial visible image (idx === 0).
+          // Setting priority for all hidden slides creates unnecessary <link rel="preload"> tags
+          // that flood the network queue on page load and degrade LCP/bandwidth.
+          priority={idx === 0}
           style={{
             objectFit: 'cover',
             opacity: idx === currentIndex ? 1 : 0,
