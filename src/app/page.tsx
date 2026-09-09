@@ -6,6 +6,19 @@ import CardSlideshow from '@/components/CardSlideshow';
 import InteractiveGallery from '@/components/InteractiveGallery';
 import GalleryMarquee from '@/components/GalleryMarquee';
 
+// Bolt: Move static image array outside render loop to prevent re-allocating array instances on every render
+const GENERAL_LEADERSHIP_IMAGES = [
+  '/general-slide-1.jpg',
+  '/general-slide-2.jpg',
+  '/general-slide-3.jpg',
+  '/general-slide-4.jpg',
+  '/general-slide-5.jpg',
+  '/general-slide-6.jpg',
+  '/general-slide-7.jpg',
+  '/general-slide-8.jpg',
+  '/general-slide-9.jpg'
+];
+
 export default async function Home() {
   const db = getDb();
   
@@ -213,17 +226,7 @@ export default async function Home() {
             {/* General Student Leadership */}
             <Link href="/general-student-leadership" style={{ display: 'block', textDecoration: 'none', color: 'inherit' }} className="card hover-scale">
               <CardSlideshow 
-                images={[
-                  '/general-slide-1.jpg',
-                  '/general-slide-2.jpg',
-                  '/general-slide-3.jpg',
-                  '/general-slide-4.jpg',
-                  '/general-slide-5.jpg',
-                  '/general-slide-6.jpg',
-                  '/general-slide-7.jpg',
-                  '/general-slide-8.jpg',
-                  '/general-slide-9.jpg'
-                ].sort(() => Math.random() - 0.5)} 
+                images={GENERAL_LEADERSHIP_IMAGES}
                 alt="Student Leadership" 
                 interval={2000}
                 style={{ width: '100%', height: '250px', borderRadius: 'var(--radius-md) var(--radius-md) 0 0' }}
