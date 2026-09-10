@@ -1,0 +1,3 @@
+## 2025-05-18 - Selective Preloading in Slideshow Components
+**Learning:** Setting `priority={true}` on every image within a slideshow component causes Next.js to inject `<link rel="preload">` elements for all images, including off-screen/hidden ones. On pages with multiple slideshows (like project cards and student leadership cards), this triggers simultaneous high-priority fetch requests for dozens of images, saturating network bandwidth and delaying Largest Contentful Paint (LCP) and critical page load time.
+**Action:** Always set `priority={idx === 0}` (or lazy load non-visible slides) so that only the immediately visible hero slide is preloaded while non-active slides are loaded on demand.
