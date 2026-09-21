@@ -25,7 +25,11 @@ export default function CardSlideshow({ images, alt, className, style, interval 
           alt={`${alt} slide ${idx + 1}`}
           fill
           sizes="(max-width: 768px) 100vw, 400px"
-          priority={true} // Prioritize loading to prevent blurring
+          // Bolt ⚡ Performance Optimization:
+          // Only prioritize loading for the first visible slide image (idx === 0)
+          // to reduce initial bandwidth, avoid unnecessary preloading of hidden slides,
+          // and improve Largest Contentful Paint (LCP) and initial page load speed.
+          priority={idx === 0}
           style={{
             objectFit: 'cover',
             opacity: idx === currentIndex ? 1 : 0,
